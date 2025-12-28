@@ -2,14 +2,19 @@
 import discord
 # 導入commands指令模組
 from discord.ext import commands
+import os
+from dotenv import load_dotenv
+
 
 # intents是要求機器人的權限
 intents = discord.Intents.all()
 # command_prefix是前綴符號，可以自由選擇($, #, &...)
 bot = commands.Bot(command_prefix = "%", intents = intents)
-f = open("token.txt")
-content = f.read()
-f.close()
+
+# f = open("token.txt")
+# content = f.read()
+# f.close()
+# content = 
 
 
 @bot.event
@@ -23,4 +28,4 @@ async def Hello(ctx):
     # 回覆Hello, world!
     await ctx.send("Hello, world!")
 
-bot.run(content)
+bot.run(os.getenv("TOKEN"))
